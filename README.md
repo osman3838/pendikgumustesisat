@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pendik Gümüş Tesisat
 
-## Getting Started
+Production website for **Pendik Gümüş Tesisat** — plumbing and unclogging services in Pendik, Kartal, and Tuzla (Istanbul).
 
-First, run the development server:
+- **Domain:** [www.pendikgumustesisat.com](https://www.pendikgumustesisat.com)
+- **Stack:** Next.js (App Router), TypeScript, Tailwind CSS
+- **Deploy:** Vercel
+
+## Local development
 
 ```bash
+npm install
+cp .env.example .env.local
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Variable | Description |
+|----------|-------------|
+| `NEXT_PUBLIC_WHATSAPP_NUMBER` | WhatsApp number for click-to-chat links (digits only, e.g. `905511654955`) |
+| `NEXT_PUBLIC_SITE_URL` | Canonical site URL (defaults to `https://www.pendikgumustesisat.com`) |
 
-## Learn More
+Both variables are public (`NEXT_PUBLIC_`) so client components (sticky WhatsApp button, mobile nav) can build `wa.me` links safely. If unset, hardcoded fallbacks prevent broken URLs.
 
-To learn more about Next.js, take a look at the following resources:
+## Vercel deploy
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Push this repo to GitHub
+2. Import the project in [Vercel](https://vercel.com)
+3. Set environment variables for **Production**, **Preview**, and **Development**:
+   - `NEXT_PUBLIC_WHATSAPP_NUMBER` = `905511654955`
+   - `NEXT_PUBLIC_SITE_URL` = `https://www.pendikgumustesisat.com`
+4. Add custom domain: `www.pendikgumustesisat.com` (optionally redirect apex `pendikgumustesisat.com` → www)
+5. Deploy
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Post-deploy smoke tests
 
-## Deploy on Vercel
+- Tap the sticky WhatsApp button on mobile → should open `wa.me/905511654955`
+- View page source → JSON-LD shows `Pendik Gümüş Tesisat` and production URL
+- Visit `/sitemap.xml` and `/robots.txt` → URLs use `https://www.pendikgumustesisat.com`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Brand assets
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Place your logo in `public/brand/`. The layout currently uses a text fallback until a logo is added.
+
+## Blog
+
+Blog ingestion is deferred. `/blog` shows a placeholder until a separate publishing system is connected.
