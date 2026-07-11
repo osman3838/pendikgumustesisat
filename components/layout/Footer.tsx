@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
 import { whatsappUrl } from "@/lib/whatsapp";
+import { Logo } from "@/components/brand/Logo";
 import { Container } from "@/components/ui/Container";
 import { PhoneIcon } from "@/components/ui/PhoneIcon";
 
@@ -19,10 +20,8 @@ export function Footer() {
       <Container className="py-12">
         <div className="grid gap-8 md:grid-cols-3">
           <div>
-            <p className="font-display text-lg font-semibold text-on-dark">
-              {siteConfig.name}
-            </p>
-            <p className="mt-2 text-sm text-on-dark-muted">
+            <Logo variant="on-dark" className="h-8 sm:h-9" />
+            <p className="mt-3 text-sm text-on-dark-muted">
               {siteConfig.areas.join(" • ")} — {siteConfig.hours} acil servis
             </p>
           </div>

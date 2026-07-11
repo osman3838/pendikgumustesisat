@@ -17,6 +17,7 @@ export function JsonLd() {
     "@type": "Plumber",
     name: siteConfig.name,
     url: siteConfig.url,
+    image: `${siteConfig.url}${siteConfig.logo.src}`,
     telephone: whatsappTelephone(),
     areaServed: siteConfig.areas.map((area) => ({
       "@type": "City",

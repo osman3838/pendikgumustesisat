@@ -11,4 +11,10 @@ export const siteConfig = {
   phoneTel: "tel:+905511654955",
   defaultWhatsAppMessage:
     "Merhaba, tesisat hizmeti hakkında bilgi almak istiyorum.",
+  logo: {
+    src: "/brand/logo.png",
+    alt: "Pendik Gümüş Tesisat logosu",
+    width: 1024,
+    height: 614,
+  },
 } as const;

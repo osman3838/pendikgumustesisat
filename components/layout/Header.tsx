@@ -5,6 +5,7 @@ import { useState } from "react";
 import { siteConfig } from "@/lib/site-config";
 import { whatsappUrl } from "@/lib/whatsapp";
 import { cn } from "@/lib/utils";
+import { Logo } from "@/components/brand/Logo";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { PhoneIcon } from "@/components/ui/PhoneIcon";
 
@@ -71,12 +72,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-surface/95 shadow-sm backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8">
-        <Link
-          href="/"
-          className="font-display text-lg font-semibold text-primary sm:text-xl"
-        >
-          {siteConfig.name}
-        </Link>
+        <Logo priority />
 
         <nav
           className="hidden items-center gap-5 md:flex"

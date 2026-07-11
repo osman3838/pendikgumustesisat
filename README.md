@@ -43,7 +43,7 @@ Both variables are public (`NEXT_PUBLIC_`) so client components (sticky WhatsApp
 
 ## Brand assets
 
-Place your logo in `public/brand/`. The layout currently uses a text fallback until a logo is added.
+Logo: [`public/brand/logo.png`](public/brand/logo.png) — used in header, footer, favicon, Open Graph, and JSON-LD.
 
 ## Blog
 
