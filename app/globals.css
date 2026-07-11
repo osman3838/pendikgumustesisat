@@ -4,25 +4,60 @@
 :root {
   --brand-primary: #0b4a8f;
   --brand-primary-dark: #083566;
+  --brand-primary-light: #e8f1fa;
   --brand-accent: #16a6c4;
+  --brand-accent-light: #e6f7fb;
   --brand-whatsapp: #25d366;
-  --brand-bg: #f8fafc;
+  --brand-bg: #f4f7fb;
+  --brand-bg-alt: #eef3f9;
   --brand-surface: #ffffff;
+  --brand-surface-elevated: #ffffff;
   --brand-text: #1e293b;
+  --brand-text-inverse: #ffffff;
+  --brand-text-inverse-muted: #cbd5e1;
   --brand-muted: #64748b;
+  --brand-border: #e2e8f0;
+  --brand-border-subtle: #f1f5f9;
+  --brand-hero-from: #062d57;
+  --brand-hero-via: #0b4a8f;
+  --brand-hero-to: #0e5a8a;
+  --brand-radius-sm: 0.5rem;
+  --brand-radius-md: 0.75rem;
+  --brand-radius-lg: 1rem;
+  --brand-radius-xl: 1.25rem;
+  --brand-shadow-sm: 0 1px 2px rgb(11 74 143 / 0.06);
+  --brand-shadow-md: 0 4px 16px rgb(11 74 143 / 0.08);
+  --brand-shadow-lg: 0 12px 32px rgb(11 74 143 / 0.12);
+  --brand-shadow-card-hover: 0 16px 40px rgb(11 74 143 / 0.14);
 }
 
 @theme inline {
   --color-primary: var(--brand-primary);
   --color-primary-dark: var(--brand-primary-dark);
+  --color-primary-light: var(--brand-primary-light);
   --color-accent: var(--brand-accent);
+  --color-accent-light: var(--brand-accent-light);
   --color-whatsapp: var(--brand-whatsapp);
   --color-bg: var(--brand-bg);
+  --color-bg-alt: var(--brand-bg-alt);
   --color-surface: var(--brand-surface);
+  --color-surface-elevated: var(--brand-surface-elevated);
   --color-text: var(--brand-text);
+  --color-text-inverse: var(--brand-text-inverse);
+  --color-text-inverse-muted: var(--brand-text-inverse-muted);
   --color-muted: var(--brand-muted);
-  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
-    sans-serif;
+  --color-border: var(--brand-border);
+  --color-border-subtle: var(--brand-border-subtle);
+  --font-sans: var(--font-body), system-ui, sans-serif;
+  --font-display: var(--font-display), Georgia, serif;
+  --radius-sm: var(--brand-radius-sm);
+  --radius-md: var(--brand-radius-md);
+  --radius-lg: var(--brand-radius-lg);
+  --radius-xl: var(--brand-radius-xl);
+  --shadow-sm: var(--brand-shadow-sm);
+  --shadow-md: var(--brand-shadow-md);
+  --shadow-lg: var(--brand-shadow-lg);
+  --shadow-card-hover: var(--brand-shadow-card-hover);
 }
 
 body {
@@ -31,7 +66,58 @@ body {
   font-family: var(--font-sans);
 }
 
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
 *:focus-visible {
   outline: 2px solid var(--brand-accent);
   outline-offset: 2px;
+}
+
+.hero-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--brand-hero-from) 0%,
+    var(--brand-hero-via) 45%,
+    var(--brand-hero-to) 100%
+  );
+}
+
+.hero-mesh {
+  background-image:
+    radial-gradient(
+      ellipse 80% 60% at 70% 20%,
+      rgb(22 166 196 / 0.18) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 60% 50% at 20% 80%,
+      rgb(255 255 255 / 0.06) 0%,
+      transparent 50%
+    );
+}
+
+.section-divider {
+  border-top: 1px solid var(--brand-border);
+}
+
+.card-elevated {
+  border: 1px solid var(--brand-border);
+  border-radius: var(--brand-radius-lg);
+  background: var(--brand-surface);
+  box-shadow: var(--brand-shadow-md);
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.card-elevated:hover {
+  box-shadow: var(--brand-shadow-card-hover);
+  transform: translateY(-2px);
 }
