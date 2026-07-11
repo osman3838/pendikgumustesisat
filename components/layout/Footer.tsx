@@ -15,28 +15,25 @@ export function Footer() {
   const waUrl = whatsappUrl(siteConfig.defaultWhatsAppMessage);
 
   return (
-    <footer className="mt-auto border-t border-border bg-primary-dark text-text-inverse">
+    <footer className="surface-dark mt-auto border-t border-on-dark-border bg-primary-dark">
       <Container className="py-12">
         <div className="grid gap-8 md:grid-cols-3">
           <div>
-            <p className="font-display text-lg font-semibold">
+            <p className="font-display text-lg font-semibold text-on-dark">
               {siteConfig.name}
             </p>
-            <p className="mt-2 text-sm text-text-inverse-muted">
+            <p className="mt-2 text-sm text-on-dark-muted">
               {siteConfig.areas.join(" • ")} — {siteConfig.hours} acil servis
             </p>
           </div>
           <nav aria-label="Alt menü">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-text-inverse-muted">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-on-dark-subtle">
               Sayfalar
             </p>
             <ul className="space-y-2">
               {footerLinks.map((link) => (
                 <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-text-inverse-muted hover:text-text-inverse"
-                  >
+                  <Link href={link.href} className="link-on-dark text-sm">
                     {link.label}
                   </Link>
                 </li>
@@ -44,16 +41,16 @@ export function Footer() {
             </ul>
           </nav>
           <div>
-            <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-text-inverse-muted">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-on-dark-subtle">
               İletişim
             </p>
             <ul className="space-y-2">
               <li>
                 <a
                   href={siteConfig.phoneTel}
-                  className="inline-flex items-center gap-2 text-sm text-text-inverse-muted hover:text-text-inverse"
+                  className="link-on-dark inline-flex items-center gap-2 text-sm"
                 >
-                  <PhoneIcon className="h-4 w-4" />
+                  <PhoneIcon className="h-4 w-4" aria-hidden="true" />
                   {siteConfig.phoneDisplay}
                 </a>
               </li>
@@ -62,7 +59,7 @@ export function Footer() {
                   href={waUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-text-inverse-muted hover:text-text-inverse"
+                  className="link-on-dark text-sm"
                 >
                   WhatsApp ile ulaşın
                 </a>
@@ -70,7 +67,7 @@ export function Footer() {
             </ul>
           </div>
         </div>
-        <p className="mt-10 border-t border-white/15 pt-6 text-center text-xs text-text-inverse-muted">
+        <p className="mt-10 border-t border-on-dark-border pt-6 text-center text-xs text-on-dark-subtle">
           © {new Date().getFullYear()} {siteConfig.name}. Tüm hakları saklıdır.
         </p>
       </Container>

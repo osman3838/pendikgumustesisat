@@ -13,8 +13,10 @@
   --brand-surface: #ffffff;
   --brand-surface-elevated: #ffffff;
   --brand-text: #1e293b;
-  --brand-text-inverse: #ffffff;
-  --brand-text-inverse-muted: #cbd5e1;
+  --brand-on-dark: #ffffff;
+  --brand-on-dark-muted: #e2e8f0;
+  --brand-on-dark-subtle: #cbd5e1;
+  --brand-on-dark-border: rgb(255 255 255 / 0.18);
   --brand-muted: #64748b;
   --brand-border: #e2e8f0;
   --brand-border-subtle: #f1f5f9;
@@ -43,8 +45,10 @@
   --color-surface: var(--brand-surface);
   --color-surface-elevated: var(--brand-surface-elevated);
   --color-text: var(--brand-text);
-  --color-text-inverse: var(--brand-text-inverse);
-  --color-text-inverse-muted: var(--brand-text-inverse-muted);
+  --color-on-dark: var(--brand-on-dark);
+  --color-on-dark-muted: var(--brand-on-dark-muted);
+  --color-on-dark-subtle: var(--brand-on-dark-subtle);
+  --color-on-dark-border: var(--brand-on-dark-border);
   --color-muted: var(--brand-muted);
   --color-border: var(--brand-border);
   --color-border-subtle: var(--brand-border-subtle);
@@ -120,4 +124,30 @@ h4 {
 .card-elevated:hover {
   box-shadow: var(--brand-shadow-card-hover);
   transform: translateY(-2px);
+}
+
+/* Dark surface primitive — scopes accessible foreground on navy/gradient backgrounds */
+.surface-dark {
+  color: var(--brand-on-dark);
+}
+
+.surface-dark :is(h1, h2, h3, h4, p, li, dt, dd, span, address) {
+  color: inherit;
+}
+
+.link-on-dark {
+  color: var(--brand-on-dark-muted);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.link-on-dark:hover {
+  color: var(--brand-on-dark);
+}
+
+.link-on-dark:focus-visible {
+  color: var(--brand-on-dark);
+  outline: 2px solid var(--brand-on-dark);
+  outline-offset: 2px;
+  border-radius: var(--brand-radius-sm);
 }

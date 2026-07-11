@@ -9,13 +9,13 @@ type ButtonProps = React.ComponentProps<"button"> & {
 
 const variants = {
   primary:
-    "bg-primary text-text-inverse shadow-md hover:bg-primary-dark",
-  accent: "bg-accent text-text-inverse shadow-md hover:opacity-90",
-  whatsapp: "bg-whatsapp text-text-inverse shadow-md hover:opacity-90",
+    "bg-primary text-on-dark shadow-md hover:bg-primary-dark",
+  accent: "bg-accent text-on-dark shadow-md hover:opacity-90",
+  whatsapp: "bg-whatsapp text-on-dark shadow-md hover:opacity-90",
   outline:
-    "border-2 border-primary text-primary bg-transparent hover:bg-primary hover:text-text-inverse",
+    "border-2 border-primary text-primary bg-transparent hover:bg-primary hover:text-on-dark",
   "ghost-inverse":
-    "border border-white/25 bg-white/10 text-text-inverse backdrop-blur-sm hover:bg-white/15",
+    "border border-on-dark-border bg-white/10 text-on-dark backdrop-blur-sm hover:bg-white/15",
 };
 
 export function Button({
