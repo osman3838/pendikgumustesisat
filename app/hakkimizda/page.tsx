@@ -2,6 +2,7 @@ import { buildMetadata } from "@/lib/metadata";
 import { siteConfig } from "@/lib/site-config";
 import { whatsappUrl } from "@/lib/whatsapp";
 import { Button } from "@/components/ui/Button";
+import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
 
 export const metadata = buildMetadata({
@@ -14,12 +15,10 @@ export default function HakkimizdaPage() {
   const waUrl = whatsappUrl(siteConfig.defaultWhatsAppMessage);
 
   return (
-    <Section>
-      <div className="max-w-3xl">
-        <h1 className="text-3xl font-bold text-primary md:text-4xl">
-          Hakkımızda
-        </h1>
-        <div className="prose prose-slate mt-8 max-w-none">
+    <>
+      <PageHero title="Hakkımızda" />
+      <Section className="bg-surface">
+        <div className="prose prose-slate max-w-3xl prose-headings:font-display">
           <p>
             {siteConfig.name} olarak Pendik, Kartal ve Tuzla bölgelerinde
             tesisat, tıkanıklık açma ve su kaçağı tespiti alanlarında
@@ -39,12 +38,15 @@ export default function HakkimizdaPage() {
             üzerinden bize ulaşabilirsiniz.
           </p>
         </div>
-        <div className="mt-10">
+        <div className="mt-10 flex flex-col gap-3 sm:flex-row">
           <Button href={waUrl} external variant="whatsapp">
             WhatsApp&apos;tan İletişime Geçin
           </Button>
+          <Button href={siteConfig.phoneTel} external variant="outline">
+            {siteConfig.phoneDisplay}
+          </Button>
         </div>
-      </div>
-    </Section>
+      </Section>
+    </>
   );
 }

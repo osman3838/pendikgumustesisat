@@ -8,7 +8,9 @@ import {
 import { buildMetadata } from "@/lib/metadata";
 import { whatsappUrl } from "@/lib/whatsapp";
 import { Button } from "@/components/ui/Button";
+import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
+import { ServiceCard } from "@/components/ui/ServiceCard";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -42,25 +44,14 @@ export default async function ServiceDetailPage({ params }: Props) {
 
   return (
     <>
-      <Section className="bg-primary text-white">
-        <div className="max-w-3xl">
-          <Link
-            href="/hizmetler"
-            className="text-sm text-slate-200 hover:text-white"
-          >
-            ← Tüm hizmetler
-          </Link>
-          <h1 className="mt-4 text-3xl font-bold md:text-4xl">
-            {service.title}
-          </h1>
-          <p className="mt-4 text-lg text-slate-100">
-            {service.shortDescription}
-          </p>
-        </div>
-      </Section>
+      <PageHero
+        title={service.title}
+        description={service.shortDescription}
+        backLink={{ href: "/hizmetler", label: "← Tüm hizmetler" }}
+      />
 
-      <Section>
-        <div className="prose prose-slate max-w-3xl">
+      <Section className="bg-surface">
+        <div className="prose prose-slate max-w-3xl prose-headings:font-display">
           {service.body.map((paragraph) => (
             <p key={paragraph.slice(0, 40)}>{paragraph}</p>
           ))}
@@ -72,20 +63,21 @@ export default async function ServiceDetailPage({ params }: Props) {
         </div>
       </Section>
 
-      <Section className="bg-bg">
-        <h2 className="text-xl font-bold text-primary">Diğer Hizmetler</h2>
-        <ul className="mt-4 space-y-2">
+      <Section className="section-divider bg-bg-alt">
+        <h2 className="font-display text-xl font-semibold text-primary">
+          Diğer Hizmetler
+        </h2>
+        <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {related.map((s) => (
-            <li key={s.slug}>
-              <Link
-                href={`/hizmetler/${s.slug}`}
-                className="text-accent hover:underline"
-              >
-                {s.title}
-              </Link>
-            </li>
+            <ServiceCard key={s.slug} service={s} />
           ))}
-        </ul>
+        </div>
+        <Link
+          href="/hizmetler"
+          className="mt-6 inline-block text-sm font-semibold text-accent hover:underline"
+        >
+          Tüm hizmetler →
+        </Link>
       </Section>
     </>
   );
