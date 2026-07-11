@@ -37,7 +37,7 @@ const reasons = [
   },
   {
     title: "Bölge Uzmanlığı",
-    description: "Pendik, Kartal ve Tuzla'da yerel deneyim.",
+    description: "Pendik, Kurtköy, Kartal ve Tuzla'da yerel deneyim.",
     icon: (
       <path
         strokeLinecap="round"

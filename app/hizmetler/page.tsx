@@ -7,7 +7,7 @@ import { Section } from "@/components/ui/Section";
 export const metadata = buildMetadata({
   title: "Hizmetlerimiz",
   description:
-    "Su kaçağı tespiti, tıkanıklık açma, gömme rezervuar, tesisat arızaları, petek bakımı ve 7/24 acil servis.",
+    "Su kaçağı tespiti, tıkanıklık açma, gömme rezervuar, tesisat arızaları, petek bakımı, kombi bakım ve onarım, su tesisatı, doğalgaz tesisatı ve 7/24 acil servis.",
   path: "/hizmetler",
 });
 
@@ -16,7 +16,7 @@ export default function HizmetlerPage() {
     <>
       <PageHero
         title="Hizmetlerimiz"
-        description="Pendik, Kartal ve Tuzla genelinde sunduğumuz tesisat ve tıkanıklık açma hizmetleri."
+        description="Pendik, Kurtköy, Kartal ve Tuzla genelinde sunduğumuz tesisat ve tıkanıklık açma hizmetleri."
       />
       <Section className="bg-bg-alt">
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

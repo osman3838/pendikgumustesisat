@@ -9,7 +9,7 @@ export function ServicesGrid() {
     <Section className="bg-bg-alt pb-12 pt-10 md:pb-16 md:pt-12">
       <SectionHeader
         title="Hizmetlerimiz"
-        lead="Pendik, Kartal ve Tuzla genelinde profesyonel tesisat hizmetleri."
+        lead="Pendik, Kurtköy, Kartal ve Tuzla genelinde profesyonel tesisat hizmetleri."
         className="max-w-none"
       />
       <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

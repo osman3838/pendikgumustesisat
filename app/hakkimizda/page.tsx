@@ -7,7 +7,7 @@ import { Section } from "@/components/ui/Section";
 
 export const metadata = buildMetadata({
   title: "Hakkımızda",
-  description: `${siteConfig.name} — Pendik, Kartal ve Tuzla'da güvenilir tesisat hizmeti.`,
+  description: `${siteConfig.name} — Pendik, Kurtköy, Kartal ve Tuzla'da güvenilir tesisat hizmeti.`,
   path: "/hakkimizda",
 });
 
@@ -20,7 +20,7 @@ export default function HakkimizdaPage() {
       <Section className="bg-surface">
         <div className="prose max-w-3xl prose-headings:font-heading">
           <p>
-            {siteConfig.name} olarak Pendik, Kartal ve Tuzla bölgelerinde
+            {siteConfig.name} olarak Pendik, Kurtköy, Kartal ve Tuzla bölgelerinde
             tesisat, tıkanıklık açma ve su kaçağı tespiti alanlarında
             profesyonel hizmet sunuyoruz. Müşterilerimize kırmadan müdahale
             yöntemleriyle hızlı, temiz ve kalıcı çözümler sağlamayı

@@ -3,9 +3,9 @@ export const siteConfig = {
   url:
     process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.pendikgumustesisat.com",
   description:
-    "Pendik, Kartal ve Tuzla'da kırmadan tıkanıklık açma, su kaçağı tespiti ve 7/24 acil tesisat hizmeti.",
+    "Pendik, Kurtköy, Kartal ve Tuzla'da kırmadan tıkanıklık açma, su kaçağı tespiti ve 7/24 acil tesisat hizmeti.",
   locale: "tr_TR",
-  areas: ["Pendik", "Kartal", "Tuzla"] as const,
+  areas: ["Pendik", "Kurtköy", "Kartal", "Tuzla"] as const,
   hours: "7/24",
   phoneDisplay: "0535 023 34 05",
   phoneTel: "tel:+905350233405",
@@ -31,7 +31,7 @@ export const siteConfig = {
     /** Keyless Google Maps embed — swap for a Google Business Profile embed URL when ready */
     embedUrl:
       "https://maps.google.com/maps?q=Pendik,+İstanbul,+Türkiye&hl=tr&z=11&output=embed",
-    title: "Pendik, Kartal ve Tuzla hizmet bölgesi haritası",
-    caption: "Hizmet bölgemiz: Pendik, Kartal ve Tuzla.",
+    title: "Pendik, Kurtköy, Kartal ve Tuzla hizmet bölgesi haritası",
+    caption: "Hizmet bölgemiz: Pendik, Kurtköy, Kartal ve Tuzla.",
   },
 } as const;

@@ -92,6 +92,49 @@ export function ServiceIcon({ slug, className }: ServiceIconProps) {
           <path d="M12 7v5l3 3" strokeLinecap="round" />
         </svg>
       );
+    case "kombi-bakim-onarim":
+      return (
+        <svg
+          className={iconClass}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={1.75}
+          aria-hidden="true"
+        >
+          <rect x="5" y="3" width="14" height="18" rx="2" />
+          <path d="M9 8h6M9 12h6M9 16h4" />
+          <path d="M12 21v-2" strokeLinecap="round" />
+        </svg>
+      );
+    case "su-tesisati":
+      return (
+        <svg
+          className={iconClass}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={1.75}
+          aria-hidden="true"
+        >
+          <path d="M4 12h8M12 12l4-4v8l-4-4" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M12 3c-2 3-4 5-4 7a4 4 0 108 0c0-2-2-4-4-7z" />
+        </svg>
+      );
+    case "dogalgaz-tesisati":
+      return (
+        <svg
+          className={iconClass}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={1.75}
+          aria-hidden="true"
+        >
+          <path d="M12 3c-3 4-5 7-5 10a5 5 0 1010 0c0-3-2-6-5-10z" />
+          <path d="M8 14h8M10 17h4" strokeLinecap="round" />
+        </svg>
+      );
     default:
       return (
         <svg
