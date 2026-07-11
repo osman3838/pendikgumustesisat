@@ -28,7 +28,7 @@ export function ProcessTimeline({ steps }: ProcessTimelineProps) {
           )}
 
           <div className="relative z-10 flex gap-4 pb-8 sm:flex-col sm:gap-3 sm:pb-0">
-            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent text-sm font-bold text-white shadow-md">
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent text-sm font-bold text-on-dark shadow-md">
               {index + 1}
             </span>
             <div className="pt-0.5 sm:pt-0">

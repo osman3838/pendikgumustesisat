@@ -43,7 +43,7 @@ Both variables are public (`NEXT_PUBLIC_`) so client components (sticky WhatsApp
 
 ## Brand assets
 
-Logo: [`public/brand/logo.png`](public/brand/logo.png) — used in header, footer, favicon, Open Graph, and JSON-LD.
+Logo: [`public/brand/logo.jpg`](public/brand/logo.jpg) — used in header, footer, favicon, Open Graph, and JSON-LD.
 
 ## Blog
 

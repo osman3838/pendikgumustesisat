@@ -12,7 +12,10 @@
   --brand-bg-alt: #eef3f9;
   --brand-surface: #ffffff;
   --brand-surface-elevated: #ffffff;
-  --brand-text: #1e293b;
+  --brand-on-light: #1e293b;
+  --brand-on-light-muted: #475569;
+  --brand-on-light-subtle: #64748b;
+  --brand-on-light-border: #cbd5e1;
   --brand-on-dark: #ffffff;
   --brand-on-dark-muted: #e2e8f0;
   --brand-on-dark-subtle: #cbd5e1;
@@ -44,7 +47,11 @@
   --color-bg-alt: var(--brand-bg-alt);
   --color-surface: var(--brand-surface);
   --color-surface-elevated: var(--brand-surface-elevated);
-  --color-text: var(--brand-text);
+  --color-text: var(--brand-on-light);
+  --color-on-light: var(--brand-on-light);
+  --color-on-light-muted: var(--brand-on-light-muted);
+  --color-on-light-subtle: var(--brand-on-light-subtle);
+  --color-on-light-border: var(--brand-on-light-border);
   --color-on-dark: var(--brand-on-dark);
   --color-on-dark-muted: var(--brand-on-dark-muted);
   --color-on-dark-subtle: var(--brand-on-dark-subtle);
@@ -66,7 +73,7 @@
 
 body {
   background: var(--brand-bg);
-  color: var(--brand-text);
+  color: var(--brand-on-light);
   font-family: var(--font-sans);
 }
 
@@ -126,7 +133,33 @@ h4 {
   transform: translateY(-2px);
 }
 
-/* Dark surface primitive — scopes accessible foreground on navy/gradient backgrounds */
+/* Light surface — default page foreground on pale backgrounds */
+.surface-light {
+  color: var(--brand-on-light);
+}
+
+.surface-light :is(h1, h2, h3, h4, p, li, dt, dd, span, address) {
+  color: inherit;
+}
+
+.link-on-light {
+  color: var(--brand-primary);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.link-on-light:hover {
+  color: var(--brand-primary-dark);
+}
+
+.link-on-light:focus-visible {
+  color: var(--brand-primary-dark);
+  outline: 2px solid var(--brand-accent);
+  outline-offset: 2px;
+  border-radius: var(--brand-radius-sm);
+}
+
+/* Dark surface — foreground on navy / gradient backgrounds */
 .surface-dark {
   color: var(--brand-on-dark);
 }

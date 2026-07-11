@@ -12,8 +12,8 @@ export const siteConfig = {
   defaultWhatsAppMessage:
     "Merhaba, tesisat hizmeti hakkında bilgi almak istiyorum.",
   logo: {
-    src: "/brand/logo.png",
-    alt: "Pendik Gümüş Tesisat logosu",
+    src: "/brand/logo.jpg",
+    alt: "Pendik Gümüş Tesisat",
     width: 1024,
     height: 614,
   },

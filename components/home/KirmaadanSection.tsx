@@ -51,7 +51,7 @@ export function KirmaadanSection() {
           {benefits.map((benefit) => (
             <li
               key={benefit}
-              className="flex items-center gap-3 rounded-lg border border-border-subtle bg-bg-alt px-4 py-3 text-sm text-text"
+              className="flex items-center gap-3 rounded-lg border border-border-subtle bg-bg-alt px-4 py-3 text-sm text-on-light"
             >
               <span
                 className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent-light text-accent"

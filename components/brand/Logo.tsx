@@ -37,8 +37,15 @@ export function Logo({
       image
     );
 
+  const wrapped = (
+    <>
+      {content}
+      <span className="sr-only">{siteConfig.name}</span>
+    </>
+  );
+
   if (!linked) {
-    return <span className="inline-flex shrink-0">{content}</span>;
+    return <span className="inline-flex shrink-0">{wrapped}</span>;
   }
 
   return (
@@ -47,7 +54,7 @@ export function Logo({
       className="inline-flex shrink-0 rounded-lg focus-visible:outline-offset-4"
       aria-label={`${siteConfig.name} — Anasayfa`}
     >
-      {content}
+      {wrapped}
     </Link>
   );
 }

@@ -35,7 +35,7 @@ function ContactActions({ compact = false }: { compact?: boolean }) {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="WhatsApp ile yazın"
-          className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-whatsapp text-white shadow-sm hover:opacity-90"
+          className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-whatsapp text-on-dark shadow-sm hover:opacity-90"
         >
           <WhatsAppIcon className="h-4 w-4" />
         </a>
@@ -56,7 +56,7 @@ function ContactActions({ compact = false }: { compact?: boolean }) {
         href={waUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 rounded-lg bg-whatsapp px-4 py-2 text-sm font-semibold text-white shadow-sm hover:opacity-90"
+        className="inline-flex items-center gap-2 rounded-lg bg-whatsapp px-4 py-2 text-sm font-semibold text-on-dark shadow-sm hover:opacity-90"
       >
         <WhatsAppIcon className="h-4 w-4" />
         WhatsApp
@@ -82,7 +82,7 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-text hover:text-accent"
+              className="text-sm font-medium text-on-light hover:text-accent"
             >
               {link.label}
             </Link>
@@ -139,7 +139,7 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="rounded-lg px-3 py-2 text-base font-medium text-text hover:bg-bg"
+              className="rounded-lg px-3 py-2 text-base font-medium text-on-light hover:bg-bg"
               onClick={() => setOpen(false)}
             >
               {link.label}
@@ -156,7 +156,7 @@ export function Header() {
             href={waUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-lg bg-whatsapp px-4 py-3 font-semibold text-white"
+            className="inline-flex items-center justify-center gap-2 rounded-lg bg-whatsapp px-4 py-3 font-semibold text-on-dark"
           >
             <WhatsAppIcon className="h-5 w-5" />
             WhatsApp

@@ -62,7 +62,7 @@ export default function IletisimPage() {
           {/* TODO: Harita — Google Maps embed veya Mapbox ile konum gösterimi eklenebilir */}
 
           <div className="mt-10 rounded-xl border border-dashed border-border bg-bg-alt p-6 text-sm text-muted">
-            <p className="font-semibold text-text">Yakında</p>
+            <p className="font-semibold text-on-light">Yakında</p>
             <p className="mt-1">
               İletişim formu ve harita entegrasyonu ileride eklenecektir.
             </p>
