@@ -21,10 +21,6 @@ export const siteConfig = {
     width: 942,
     height: 319,
   },
-  favicon: {
-    icon: "/favicon.ico",
-    apple: "/brand/apple-icon.png",
-  },
   hero: {
     src: "/brand/hero.jpg",
     alt: "Termal kamera ile banyoda su kaçağı tespiti yapan Gümüş Tesisat teknisyeni",
