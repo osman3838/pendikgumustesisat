@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/Button";
 import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
 import { PhoneIcon } from "@/components/ui/PhoneIcon";
+import { ServiceAreaMap } from "@/components/ui/ServiceAreaMap";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 
 export const metadata = buildMetadata({
@@ -26,23 +27,23 @@ export default function IletisimPage() {
         <div className="max-w-3xl">
           <dl className="grid gap-6 sm:grid-cols-2">
             <div className="rounded-xl border border-border bg-bg p-5 shadow-sm">
-              <dt className="text-xs font-semibold uppercase tracking-wide text-muted">
+              <dt className="card-body text-xs font-semibold uppercase tracking-wide">
                 Hizmet Bölgeleri
               </dt>
-              <dd className="mt-2 text-lg font-semibold text-primary">
+              <dd className="card-title mt-2 text-lg font-semibold">
                 {siteConfig.areas.join(" • ")}
               </dd>
             </div>
             <div className="rounded-xl border border-border bg-bg p-5 shadow-sm">
-              <dt className="text-xs font-semibold uppercase tracking-wide text-muted">
+              <dt className="card-body text-xs font-semibold uppercase tracking-wide">
                 Çalışma Saatleri
               </dt>
-              <dd className="mt-2 text-lg font-semibold text-primary">
+              <dd className="card-title mt-2 text-lg font-semibold">
                 {siteConfig.hours}
               </dd>
             </div>
             <div className="rounded-xl border border-border bg-bg p-5 shadow-sm sm:col-span-2">
-              <dt className="text-xs font-semibold uppercase tracking-wide text-muted">
+              <dt className="card-body text-xs font-semibold uppercase tracking-wide">
                 Hemen Ulaşın
               </dt>
               <dd className="mt-4 flex flex-col gap-3 sm:flex-row">
@@ -58,15 +59,7 @@ export default function IletisimPage() {
             </div>
           </dl>
 
-          {/* TODO: İletişim formu — Formspree, Resend veya benzeri entegrasyon eklenebilir */}
-          {/* TODO: Harita — Google Maps embed veya Mapbox ile konum gösterimi eklenebilir */}
-
-          <div className="mt-10 rounded-xl border border-dashed border-border bg-bg-alt p-6 text-sm text-muted">
-            <p className="font-semibold text-on-light">Yakında</p>
-            <p className="mt-1">
-              İletişim formu ve harita entegrasyonu ileride eklenecektir.
-            </p>
-          </div>
+          <ServiceAreaMap />
         </div>
       </Section>
     </>

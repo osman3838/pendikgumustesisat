@@ -1,4 +1,4 @@
-const WHATSAPP_FALLBACK = "905511654955";
+const WHATSAPP_FALLBACK = "905350233405";
 
 export function getWhatsAppNumber(): string {
   const raw =

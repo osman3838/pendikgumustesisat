@@ -10,6 +10,7 @@ import { whatsappUrl } from "@/lib/whatsapp";
 import { Button } from "@/components/ui/Button";
 import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ServiceCard } from "@/components/ui/ServiceCard";
 
 type Props = {
@@ -51,7 +52,7 @@ export default async function ServiceDetailPage({ params }: Props) {
       />
 
       <Section className="bg-surface">
-        <div className="prose prose-slate max-w-3xl prose-headings:font-display">
+        <div className="prose max-w-3xl prose-headings:font-heading">
           {service.body.map((paragraph) => (
             <p key={paragraph.slice(0, 40)}>{paragraph}</p>
           ))}
@@ -64,9 +65,7 @@ export default async function ServiceDetailPage({ params }: Props) {
       </Section>
 
       <Section className="section-divider bg-bg-alt">
-        <h2 className="font-display text-xl font-semibold text-primary">
-          Diğer Hizmetler
-        </h2>
+        <SectionHeader title="Diğer Hizmetler" className="max-w-none" />
         <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {related.map((s) => (
             <ServiceCard key={s.slug} service={s} />
@@ -74,7 +73,7 @@ export default async function ServiceDetailPage({ params }: Props) {
         </div>
         <Link
           href="/hizmetler"
-          className="mt-6 inline-block text-sm font-semibold text-accent hover:underline"
+          className="link-on-light mt-6 inline-block text-sm font-semibold"
         >
           Tüm hizmetler →
         </Link>

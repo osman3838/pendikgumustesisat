@@ -16,11 +16,11 @@ export function Footer() {
   const waUrl = whatsappUrl(siteConfig.defaultWhatsAppMessage);
 
   return (
-    <footer className="surface-dark mt-auto border-t border-on-dark-border bg-primary-dark">
+    <footer className="surface-dark mt-auto border-t border-on-dark-border bg-primary">
       <Container className="py-12">
         <div className="grid gap-8 md:grid-cols-3">
           <div>
-            <Logo variant="on-dark" className="h-8 sm:h-9" />
+            <Logo variant="on-dark" className="h-11 sm:h-12" />
             <p className="mt-3 text-sm text-on-dark-muted">
               {siteConfig.areas.join(" • ")} — {siteConfig.hours} acil servis
             </p>

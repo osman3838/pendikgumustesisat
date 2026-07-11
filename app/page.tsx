@@ -2,6 +2,7 @@ import { buildMetadata } from "@/lib/metadata";
 import { Hero } from "@/components/home/Hero";
 import { ServicesGrid } from "@/components/home/ServicesGrid";
 import { KirmaadanSection } from "@/components/home/KirmaadanSection";
+import { FieldWorkReels } from "@/components/home/FieldWorkReels";
 import { WhyUs } from "@/components/home/WhyUs";
 import { CtaStrip } from "@/components/home/CtaStrip";
 
@@ -16,6 +17,7 @@ export default function HomePage() {
       <Hero />
       <ServicesGrid />
       <KirmaadanSection />
+      <FieldWorkReels />
       <WhyUs />
       <CtaStrip />
     </>

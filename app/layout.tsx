@@ -7,9 +7,9 @@ import { MobileWhatsAppButton } from "@/components/layout/MobileWhatsAppButton";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/lib/site-config";
 
-const fontDisplay = Fraunces({
+const fontHeading = Fraunces({
   subsets: ["latin", "latin-ext"],
-  variable: "--font-display",
+  variable: "--font-heading",
   display: "swap",
 });
 
@@ -27,8 +27,11 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   icons: {
-    icon: siteConfig.logo.src,
-    apple: siteConfig.logo.src,
+    icon: [
+      { url: siteConfig.favicon.icon },
+      { url: "/brand/icon-32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: siteConfig.favicon.apple,
   },
   openGraph: {
     siteName: siteConfig.name,
@@ -46,7 +49,7 @@ export default function RootLayout({
   return (
     <html
       lang="tr"
-      className={`${fontDisplay.variable} ${fontBody.variable} h-full`}
+      className={`${fontHeading.variable} ${fontBody.variable} h-full`}
     >
       <body className="flex min-h-full flex-col font-sans antialiased">
         <JsonLd />

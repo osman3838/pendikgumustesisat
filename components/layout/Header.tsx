@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { Logo } from "@/components/brand/Logo";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { PhoneIcon } from "@/components/ui/PhoneIcon";
+import { SocialLinks } from "@/components/ui/SocialLinks";
 
 const navLinks = [
   { href: "/", label: "Anasayfa" },
@@ -23,6 +24,7 @@ function ContactActions({ compact = false }: { compact?: boolean }) {
   if (compact) {
     return (
       <>
+        <SocialLinks />
         <a
           href={siteConfig.phoneTel}
           aria-label={`Telefon: ${siteConfig.phoneDisplay}`}
@@ -45,6 +47,7 @@ function ContactActions({ compact = false }: { compact?: boolean }) {
 
   return (
     <>
+      <SocialLinks />
       <a
         href={siteConfig.phoneTel}
         className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface px-3 py-2 text-sm font-semibold text-primary shadow-sm hover:bg-primary-light"
@@ -70,12 +73,12 @@ export function Header() {
   const waUrl = whatsappUrl(siteConfig.defaultWhatsAppMessage);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-surface/95 shadow-sm backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8">
+    <header className="surface-light sticky top-0 z-40 border-b border-border bg-surface/95 shadow-sm backdrop-blur">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3.5 sm:px-6 sm:py-4 lg:px-8">
         <Logo priority />
 
         <nav
-          className="hidden items-center gap-5 md:flex"
+          className="hidden items-center gap-4 lg:gap-5 md:flex"
           aria-label="Ana menü"
         >
           {navLinks.map((link) => (
@@ -161,6 +164,7 @@ export function Header() {
             <WhatsAppIcon className="h-5 w-5" />
             WhatsApp
           </a>
+          <SocialLinks className="mt-3 justify-center" />
         </nav>
       </div>
     </header>

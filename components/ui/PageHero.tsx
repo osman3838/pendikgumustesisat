@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Container } from "./Container";
+import { SectionHeader } from "./SectionHeader";
 
 type PageHeroProps = {
   title: string;
@@ -23,24 +24,18 @@ export function PageHero({
       )}
     >
       <Container className="py-10 md:py-14">
-        <div className="max-w-3xl">
-          {backLink && (
-            <Link href={backLink.href} className="link-on-dark text-sm">
-              {backLink.label}
-            </Link>
-          )}
-          <h1
-            className={cn(
-              "font-display text-3xl font-semibold text-on-dark md:text-4xl",
-              backLink && "mt-4",
-            )}
-          >
-            {title}
-          </h1>
-          {description && (
-            <p className="mt-4 text-lg text-on-dark-muted">{description}</p>
-          )}
-        </div>
+        {backLink ? (
+          <Link href={backLink.href} className="link-on-dark text-sm">
+            {backLink.label}
+          </Link>
+        ) : null}
+        <SectionHeader
+          as="h1"
+          title={title}
+          lead={description}
+          titleClassName={cn("md:text-4xl", backLink && "mt-4")}
+          className="max-w-3xl"
+        />
       </Container>
     </section>
   );

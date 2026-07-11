@@ -18,7 +18,7 @@ export default function HakkimizdaPage() {
     <>
       <PageHero title="Hakkımızda" />
       <Section className="bg-surface">
-        <div className="prose prose-slate max-w-3xl prose-headings:font-display">
+        <div className="prose max-w-3xl prose-headings:font-heading">
           <p>
             {siteConfig.name} olarak Pendik, Kartal ve Tuzla bölgelerinde
             tesisat, tıkanıklık açma ve su kaçağı tespiti alanlarında

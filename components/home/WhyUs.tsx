@@ -1,4 +1,5 @@
 import { Section } from "@/components/ui/Section";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 
 const reasons = [
   {
@@ -50,20 +51,14 @@ const reasons = [
 export function WhyUs() {
   return (
     <Section className="bg-bg">
-      <div>
-        <p className="text-sm font-semibold uppercase tracking-wide text-accent">
-          Neden biz
-        </p>
-        <h2 className="mt-2 font-display text-2xl font-semibold text-primary md:text-3xl">
-          Neden Pendik Gümüş Tesisat?
-        </h2>
-      </div>
+      <SectionHeader
+        eyebrow="Neden biz"
+        title="Neden Pendik Gümüş Tesisat?"
+        className="max-w-none"
+      />
       <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {reasons.map((reason) => (
-          <div
-            key={reason.title}
-            className="card-elevated p-6 text-left"
-          >
+          <div key={reason.title} className="card-elevated p-6 text-left">
             <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-accent-light text-accent">
               <svg
                 className="h-5 w-5"
@@ -76,10 +71,10 @@ export function WhyUs() {
                 {reason.icon}
               </svg>
             </span>
-            <h3 className="mt-4 font-display font-semibold text-primary">
+            <h3 className="card-title mt-4 font-heading font-semibold">
               {reason.title}
             </h3>
-            <p className="mt-2 text-sm leading-relaxed text-muted">
+            <p className="card-body mt-2 text-sm leading-relaxed">
               {reason.description}
             </p>
           </div>

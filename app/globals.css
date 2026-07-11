@@ -2,11 +2,13 @@
 @plugin "@tailwindcss/typography";
 
 :root {
-  --brand-primary: #0b4a8f;
-  --brand-primary-dark: #083566;
-  --brand-primary-light: #e8f1fa;
+  --brand-primary: #037bd3;
+  --brand-primary-dark: #036aba;
+  --brand-primary-pressed: #0366b0;
+  --brand-primary-light: #e8f4fd;
   --brand-accent: #16a6c4;
   --brand-accent-light: #e6f7fb;
+  --brand-accent-glow: rgb(22 166 196 / 0.18);
   --brand-whatsapp: #25d366;
   --brand-bg: #f4f7fb;
   --brand-bg-alt: #eef3f9;
@@ -20,29 +22,35 @@
   --brand-on-dark-muted: #e2e8f0;
   --brand-on-dark-subtle: #cbd5e1;
   --brand-on-dark-border: rgb(255 255 255 / 0.18);
+  --brand-on-primary: #ffffff;
+  --brand-on-primary-muted: #ffffff;
+  --brand-on-primary-large: #ffffff;
   --brand-muted: #64748b;
   --brand-border: #e2e8f0;
   --brand-border-subtle: #f1f5f9;
-  --brand-hero-from: #062d57;
-  --brand-hero-via: #0b4a8f;
-  --brand-hero-to: #0e5a8a;
+  --brand-hero-from: #025e9e;
+  --brand-hero-via: #037bd3;
+  --brand-hero-to: #0488e0;
   --brand-radius-sm: 0.5rem;
   --brand-radius-md: 0.75rem;
   --brand-radius-lg: 1rem;
   --brand-radius-xl: 1.25rem;
-  --brand-shadow-sm: 0 1px 2px rgb(11 74 143 / 0.06);
-  --brand-shadow-md: 0 4px 16px rgb(11 74 143 / 0.08);
-  --brand-shadow-lg: 0 12px 32px rgb(11 74 143 / 0.12);
-  --brand-shadow-card-hover: 0 16px 40px rgb(11 74 143 / 0.14);
+  --brand-shadow-sm: 0 1px 2px rgb(3 123 211 / 0.06);
+  --brand-shadow-md: 0 4px 16px rgb(3 123 211 / 0.08);
+  --brand-shadow-lg: 0 12px 32px rgb(3 123 211 / 0.12);
+  --brand-shadow-card-hover: 0 16px 40px rgb(3 123 211 / 0.14);
 }
 
 @theme inline {
   --color-primary: var(--brand-primary);
   --color-primary-dark: var(--brand-primary-dark);
+  --color-primary-pressed: var(--brand-primary-pressed);
   --color-primary-light: var(--brand-primary-light);
   --color-accent: var(--brand-accent);
   --color-accent-light: var(--brand-accent-light);
   --color-whatsapp: var(--brand-whatsapp);
+  --color-on-primary: var(--brand-on-primary);
+  --color-on-primary-muted: var(--brand-on-primary-muted);
   --color-bg: var(--brand-bg);
   --color-bg-alt: var(--brand-bg-alt);
   --color-surface: var(--brand-surface);
@@ -60,7 +68,7 @@
   --color-border: var(--brand-border);
   --color-border-subtle: var(--brand-border-subtle);
   --font-sans: var(--font-body), system-ui, sans-serif;
-  --font-display: var(--font-display), Georgia, serif;
+  --font-heading: var(--font-heading), Georgia, serif;
   --radius-sm: var(--brand-radius-sm);
   --radius-md: var(--brand-radius-md);
   --radius-lg: var(--brand-radius-lg);
@@ -81,7 +89,7 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
   font-weight: 600;
   letter-spacing: -0.02em;
 }
@@ -92,7 +100,8 @@ h4 {
 }
 
 .hero-gradient {
-  background: linear-gradient(
+  background-color: var(--brand-primary);
+  background-image: linear-gradient(
     135deg,
     var(--brand-hero-from) 0%,
     var(--brand-hero-via) 45%,
@@ -104,7 +113,7 @@ h4 {
   background-image:
     radial-gradient(
       ellipse 80% 60% at 70% 20%,
-      rgb(22 166 196 / 0.18) 0%,
+      var(--brand-accent-glow) 0%,
       transparent 60%
     ),
     radial-gradient(
@@ -133,39 +142,87 @@ h4 {
   transform: translateY(-2px);
 }
 
-/* Light surface — default page foreground on pale backgrounds */
+/*
+ * Surface primitives — foreground is scoped by section tone.
+ * Semantic .section-* / .card-* classes read from the active surface.
+ * Do NOT use blanket "color: inherit" on headings; it overrides Tailwind utilities.
+ */
 .surface-light {
   color: var(--brand-on-light);
 }
 
-.surface-light :is(h1, h2, h3, h4, p, li, dt, dd, span, address) {
-  color: inherit;
+.surface-dark {
+  color: var(--brand-on-dark);
+}
+
+.surface-light .section-eyebrow {
+  color: var(--brand-primary-dark);
+}
+
+.surface-light .section-title,
+.surface-light .section-title-lg {
+  color: var(--brand-on-light);
+}
+
+.surface-light .section-lead {
+  color: var(--brand-on-light-muted);
+}
+
+.surface-light .section-subtitle {
+  color: var(--brand-on-light);
+}
+
+.surface-light .card-title {
+  color: var(--brand-primary-dark);
+}
+
+.surface-light .card-body {
+  color: var(--brand-on-light-muted);
+}
+
+.surface-light .prose {
+  --tw-prose-body: var(--brand-on-light-muted);
+  --tw-prose-headings: var(--brand-on-light);
+  --tw-prose-links: var(--brand-primary-dark);
+  --tw-prose-bold: var(--brand-on-light);
+}
+
+.surface-dark .section-eyebrow {
+  color: var(--brand-on-dark-muted);
+}
+
+.surface-dark .section-title,
+.surface-dark .section-title-lg {
+  color: var(--brand-on-dark);
+}
+
+.surface-dark .section-lead {
+  color: var(--brand-on-dark-muted);
+}
+
+.surface-dark .section-subtitle {
+  color: var(--brand-on-dark);
 }
 
 .link-on-light {
-  color: var(--brand-primary);
+  color: var(--brand-primary-dark);
   text-decoration: none;
   transition: color 0.15s ease;
 }
 
 .link-on-light:hover {
-  color: var(--brand-primary-dark);
+  color: var(--brand-primary-pressed);
 }
 
 .link-on-light:focus-visible {
-  color: var(--brand-primary-dark);
+  color: var(--brand-primary-pressed);
   outline: 2px solid var(--brand-accent);
   outline-offset: 2px;
   border-radius: var(--brand-radius-sm);
 }
 
-/* Dark surface — foreground on navy / gradient backgrounds */
-.surface-dark {
-  color: var(--brand-on-dark);
-}
-
-.surface-dark :is(h1, h2, h3, h4, p, li, dt, dd, span, address) {
-  color: inherit;
+.surface-light .text-primary {
+  color: var(--brand-primary-dark);
 }
 
 .link-on-dark {
@@ -183,4 +240,87 @@ h4 {
   outline: 2px solid var(--brand-on-dark);
   outline-offset: 2px;
   border-radius: var(--brand-radius-sm);
+}
+
+/*
+ * Brand fills use true #037BD3. AA is met by foreground choice, not by darkening the fill.
+ * primary-dark / primary-pressed are hover/pressed fills and text-on-white only.
+ */
+.bg-primary,
+.hero-gradient {
+  color: var(--brand-on-primary);
+}
+
+.bg-primary .section-title,
+.bg-primary .section-title-lg,
+.hero-gradient .section-title,
+.hero-gradient .section-title-lg,
+.surface-dark.bg-primary .section-title,
+.surface-dark.bg-primary .section-title-lg,
+.surface-dark.hero-gradient .section-title,
+.surface-dark.hero-gradient .section-title-lg {
+  color: var(--brand-on-primary-large);
+}
+
+.bg-primary .section-lead,
+.hero-gradient .section-lead,
+.surface-dark.bg-primary .section-lead,
+.surface-dark.hero-gradient .section-lead {
+  color: var(--brand-on-primary-large);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.surface-dark.bg-primary,
+.surface-dark.bg-primary .text-on-dark-muted,
+.surface-dark.bg-primary .text-on-dark-subtle,
+.surface-dark.bg-primary .link-on-dark {
+  color: var(--brand-on-primary);
+}
+
+.surface-dark.bg-primary .text-xs {
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.surface-dark.bg-primary .text-sm,
+.surface-dark.bg-primary .link-on-dark {
+  font-size: 1.1875rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.surface-dark.bg-primary .link-on-dark:hover,
+.surface-dark.bg-primary .link-on-dark:focus-visible {
+  color: var(--brand-on-primary);
+  opacity: 0.92;
+}
+
+.bg-primary.text-on-dark {
+  color: var(--brand-on-primary-large);
+  font-size: 1.1875rem;
+  font-weight: 700;
+}
+
+.bg-primary.text-on-primary {
+  color: var(--brand-on-primary-large);
+}
+
+.bg-primary.text-on-dark:hover,
+.hover\:bg-primary-dark:hover.bg-primary.text-on-dark {
+  background-color: var(--brand-primary-dark);
+  color: var(--brand-on-primary-large);
+}
+
+.hover\:bg-primary:hover.hover\:text-on-dark:hover {
+  background-color: var(--brand-primary);
+  color: var(--brand-on-primary-large);
+  font-size: 1.1875rem;
+  font-weight: 700;
+}
+
+.hover\:bg-primary-dark:hover.hover\:bg-primary:hover {
+  background-color: var(--brand-primary-dark);
+  color: var(--brand-on-primary-large);
 }

@@ -12,15 +12,18 @@ export const metadata = buildMetadata({
 export default function BlogPage() {
   return (
     <>
-      <PageHero title="Blog" description="Blog içeriklerimiz yakında yayında olacak." />
+      <PageHero
+        title="Blog"
+        description="Blog içeriklerimiz yakında yayında olacak."
+      />
       <Section className="bg-surface">
         <div className="mx-auto max-w-md rounded-xl border border-border bg-bg p-8 text-center shadow-sm">
-          <p className="text-muted">
+          <p className="section-lead">
             Tesisat ipuçları ve bölgesel bilgiler yakında burada olacak.
           </p>
           <Link
             href="/"
-            className="mt-6 inline-block font-semibold text-accent hover:underline"
+            className="link-on-light mt-6 inline-block font-semibold"
           >
             Anasayfaya dön →
           </Link>

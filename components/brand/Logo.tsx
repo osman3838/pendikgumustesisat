@@ -23,7 +23,7 @@ export function Logo({
       alt={siteConfig.logo.alt}
       width={siteConfig.logo.width}
       height={siteConfig.logo.height}
-      className={cn("h-9 w-auto sm:h-10", className)}
+      className={cn("h-14 w-auto sm:h-16", className)}
       priority={priority}
     />
   );
