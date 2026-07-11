@@ -2,17 +2,20 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 
 type ButtonProps = React.ComponentProps<"button"> & {
-  variant?: "primary" | "accent" | "whatsapp" | "outline";
+  variant?: "primary" | "accent" | "whatsapp" | "outline" | "ghost-inverse";
   href?: string;
   external?: boolean;
 };
 
 const variants = {
-  primary: "bg-primary text-white hover:bg-primary-dark",
-  accent: "bg-accent text-white hover:opacity-90",
-  whatsapp: "bg-whatsapp text-white hover:opacity-90",
+  primary:
+    "bg-primary text-text-inverse shadow-md hover:bg-primary-dark",
+  accent: "bg-accent text-text-inverse shadow-md hover:opacity-90",
+  whatsapp: "bg-whatsapp text-text-inverse shadow-md hover:opacity-90",
   outline:
-    "border-2 border-primary text-primary bg-transparent hover:bg-primary hover:text-white",
+    "border-2 border-primary text-primary bg-transparent hover:bg-primary hover:text-text-inverse",
+  "ghost-inverse":
+    "border border-white/25 bg-white/10 text-text-inverse backdrop-blur-sm hover:bg-white/15",
 };
 
 export function Button({
@@ -24,13 +27,15 @@ export function Button({
   ...props
 }: ButtonProps) {
   const classes = cn(
-    "inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3 text-base font-semibold transition-colors focus-visible:outline-offset-2",
+    "inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3 text-base font-semibold transition-all focus-visible:outline-offset-2",
     variants[variant],
     className,
   );
 
   if (href) {
-    if (external) {
+    const isExternalHttp =
+      external && (href.startsWith("http://") || href.startsWith("https://"));
+    if (isExternalHttp) {
       return (
         <a
           href={href}
@@ -38,6 +43,13 @@ export function Button({
           target="_blank"
           rel="noopener noreferrer"
         >
+          {children}
+        </a>
+      );
+    }
+    if (external || href.startsWith("tel:") || href.startsWith("mailto:")) {
+      return (
+        <a href={href} className={classes}>
           {children}
         </a>
       );
