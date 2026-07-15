@@ -7,8 +7,8 @@ export const siteConfig = {
   locale: "tr_TR",
   areas: ["Pendik", "Kurtköy", "Kartal", "Tuzla"] as const,
   hours: "7/24",
-  phoneDisplay: "0535 023 34 05",
-  phoneTel: "tel:+905350233405",
+  phoneDisplay: "0551 162 49 55",
+  phoneTel: "tel:+905511624955",
   defaultWhatsAppMessage:
     "Merhaba, tesisat hizmeti hakkında bilgi almak istiyorum.",
   social: {
