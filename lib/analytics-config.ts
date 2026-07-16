@@ -9,10 +9,16 @@ export const ADS_CONVERSION_WHATSAPP =
 export const ADS_CONVERSION_PHONE =
   "AW-16513117105/5Mt2CMOgv9EcELHXiMI9";
 
+/** GA4 measurement ID (default). Override with NEXT_PUBLIC_GA_MEASUREMENT_ID. */
+export const GA_MEASUREMENT_ID = "G-1YX918GS90";
+
 /**
- * GA4 measurement ID from env. Empty / unset → GA4 config is skipped.
- * Example: G-XXXXXXXXXX
+ * GA4 measurement ID from env, falling back to GA_MEASUREMENT_ID.
+ * Explicitly empty env value (`""`) skips GA4 config.
  */
 export function getGaMeasurementId(): string {
-  return process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim() ?? "";
+  if (process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID !== undefined) {
+    return process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID.trim();
+  }
+  return GA_MEASUREMENT_ID;
 }

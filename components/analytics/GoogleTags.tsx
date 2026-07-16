@@ -6,7 +6,7 @@ import {
 import { ConversionClickTracker } from "./ConversionClickTracker";
 
 /**
- * Site-wide Google Ads (gtag) base tag + optional GA4 config.
+ * Site-wide Google Ads + GA4 via a single gtag.js load.
  * Loaded once from the root layout via next/script (beforeInteractive → head).
  */
 export function GoogleTags() {

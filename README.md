@@ -22,7 +22,7 @@ Open [http://localhost:3000](http://localhost:3000).
 |----------|-------------|
 | `NEXT_PUBLIC_WHATSAPP_NUMBER` | WhatsApp number for click-to-chat links (digits only, e.g. `905511624955`) |
 | `NEXT_PUBLIC_SITE_URL` | Canonical site URL (defaults to `https://www.pendikgumustesisat.com`) |
-| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | Optional GA4 measurement ID (e.g. `G-XXXXXXXXXX`). Leave empty to skip GA4. |
+| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | Optional GA4 measurement ID (defaults to `G-1YX918GS90`). Set empty to disable GA4. |
 
 Both variables are public (`NEXT_PUBLIC_`) so client components (sticky WhatsApp button, mobile nav) can build `wa.me` links safely. If unset, hardcoded fallbacks prevent broken URLs.
 
