@@ -20,7 +20,7 @@ export function Hero() {
               </span>
               <SectionHeader
                 as="h1"
-                title="Kırmadan Tıkanıklık Açma ve Su Kaçağı Tespiti — Pendik, Kartal, Tuzla"
+                title="Kırmadan Tıkanıklık Açma ve Su Kaçağı Tespiti — Pendik, Kurtköy, Kartal, Tuzla"
                 lead="Kameralı cihazlarla noktasal tespit, robotik müdahale. Duvar ve fayansınıza zarar vermeden; aynı gün, garantili çözüm."
                 className="max-w-none"
               />

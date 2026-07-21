@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Section } from "@/components/ui/Section";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import ProcessTimeline from "@/components/ui/ProcessTimeline";
@@ -15,8 +16,26 @@ export function KirmaadanSection() {
       <SectionHeader
         eyebrow="Kırmadan müdahale"
         title="Kameralı Cihazlarla Kırmadan Tıkanıklık Açma"
-        lead="Geleneksel yöntemlerde tıkanıklık açma çoğu zaman kırma, dökme ve gereksiz masrafa yol açar. Pendik Gümüş Tesisat olarak bu süreci modern teknolojiyle değiştiriyoruz. Gelişmiş kameralı görüntüleme sistemlerimizle gider hatları detaylı incelenir, tıkanıklığın yeri noktasal tespit edilir; gereksiz kırma ve ek masraftan kaçınılır."
+        className="max-w-none"
       />
+      <p className="section-lead mt-3 max-w-3xl text-base">
+        Geleneksel yöntemlerde{" "}
+        <Link href="/hizmetler/tikaniklik-acma" className="link-on-light font-semibold">
+          tıkanıklık açma
+        </Link>{" "}
+        çoğu zaman kırma, dökme ve gereksiz masrafa yol açar. Pendik Gümüş
+        Tesisat olarak bu süreci modern teknolojiyle değiştiriyoruz. Gelişmiş
+        kameralı görüntüleme sistemlerimizle gider hatları detaylı incelenir,
+        tıkanıklığın yeri noktasal tespit edilir; gereksiz kırma ve ek
+        masraftan kaçınılır. Gizli sızıntı şüphesinde{" "}
+        <Link
+          href="/hizmetler/su-kacagi-tespiti"
+          className="link-on-light font-semibold"
+        >
+          su kaçağı tespiti
+        </Link>{" "}
+        ile kaynağı kırmadan buluyoruz.
+      </p>
 
       <div className="mt-10 rounded-xl border border-border bg-bg p-6 md:p-8">
         <h3 className="section-subtitle font-heading text-lg font-semibold">
