@@ -10,6 +10,10 @@
   --brand-accent-light: #e6f7fb;
   --brand-accent-glow: rgb(22 166 196 / 0.18);
   --brand-whatsapp: #25d366;
+  /* Ads CTA yellow (~#FFC107) — dark text for AA contrast */
+  --brand-cta-call: #ffc107;
+  --brand-cta-call-hover: #efb100;
+  --brand-on-cta-call: #1a2332;
   --brand-bg: #f4f7fb;
   --brand-bg-alt: #eef3f9;
   --brand-surface: #ffffff;
@@ -49,6 +53,9 @@
   --color-accent: var(--brand-accent);
   --color-accent-light: var(--brand-accent-light);
   --color-whatsapp: var(--brand-whatsapp);
+  --color-cta-call: var(--brand-cta-call);
+  --color-cta-call-hover: var(--brand-cta-call-hover);
+  --color-on-cta-call: var(--brand-on-cta-call);
   --color-on-primary: var(--brand-on-primary);
   --color-on-primary-muted: var(--brand-on-primary-muted);
   --color-bg: var(--brand-bg);

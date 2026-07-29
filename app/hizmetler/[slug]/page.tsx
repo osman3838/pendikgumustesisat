@@ -20,7 +20,9 @@ type Props = {
 };
 
 export async function generateStaticParams() {
-  return services.map((service) => ({ slug: service.slug }));
+  return services
+    .filter((service) => service.slug !== "tikaniklik-acma")
+    .map((service) => ({ slug: service.slug }));
 }
 
 export async function generateMetadata({ params }: Props) {

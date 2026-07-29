@@ -21,6 +21,15 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/lp/tikaniklik-acma",
+        destination: "/hizmetler/tikaniklik-acma",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

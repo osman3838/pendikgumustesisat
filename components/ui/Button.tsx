@@ -2,7 +2,13 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 
 type ButtonProps = React.ComponentProps<"button"> & {
-  variant?: "primary" | "accent" | "whatsapp" | "outline" | "ghost-inverse";
+  variant?:
+    | "primary"
+    | "accent"
+    | "whatsapp"
+    | "cta-call"
+    | "outline"
+    | "ghost-inverse";
   href?: string;
   external?: boolean;
 };
@@ -12,6 +18,8 @@ const variants = {
     "bg-primary text-on-dark shadow-md hover:bg-primary-dark",
   accent: "bg-accent text-on-dark shadow-md hover:opacity-90",
   whatsapp: "bg-whatsapp text-on-dark shadow-md hover:opacity-90",
+  "cta-call":
+    "bg-cta-call text-on-cta-call shadow-md hover:bg-cta-call-hover",
   outline:
     "border-2 border-primary text-primary bg-transparent hover:bg-primary hover:text-on-dark",
   "ghost-inverse":
