@@ -3,13 +3,15 @@
 import { usePathname } from "next/navigation";
 import { siteConfig } from "@/lib/site-config";
 import { lpTikaniklikPath } from "@/content/lp/tikaniklik-acma";
+import { lpSuKacagiPath } from "@/content/lp/su-kacagi-tespiti";
 import { PhoneIcon } from "@/components/ui/PhoneIcon";
 
 export function MobileCallButton() {
   const pathname = usePathname();
-  // LP sticky bar owns mobile CTAs on tıkanıklık landing / legacy /lp routes
+  // LP sticky bar owns mobile CTAs on dedicated landing pages / legacy /lp routes
   if (
     pathname === lpTikaniklikPath ||
+    pathname === lpSuKacagiPath ||
     pathname?.startsWith("/lp/")
   ) {
     return null;

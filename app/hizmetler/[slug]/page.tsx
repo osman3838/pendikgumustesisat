@@ -21,7 +21,11 @@ type Props = {
 
 export async function generateStaticParams() {
   return services
-    .filter((service) => service.slug !== "tikaniklik-acma")
+    .filter(
+      (service) =>
+        service.slug !== "tikaniklik-acma" &&
+        service.slug !== "su-kacagi-tespiti",
+    )
     .map((service) => ({ slug: service.slug }));
 }
 
