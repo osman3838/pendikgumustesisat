@@ -114,7 +114,7 @@ export const lpSuKacagiProcessSteps = [
   },
 ] as const;
 
-/** Dedicated su kaçağı reels — add these media files under public/media/lp/su-kacagi-tespiti/reels/ */
+/** Dedicated su kaçağı reels (2 available Shorts — both termal kamera). */
 export const lpSuKacagiReels = [
   {
     id: "termal-01",
@@ -123,16 +123,10 @@ export const lpSuKacagiReels = [
     videoSrc: "/media/lp/su-kacagi-tespiti/reels/termal-01.mp4",
   },
   {
-    id: "akustik-01",
-    title: "Akustik Dinleme ile Kaçak Tespiti",
-    posterSrc: "/media/lp/su-kacagi-tespiti/reels/akustik-01-poster.webp",
-    videoSrc: "/media/lp/su-kacagi-tespiti/reels/akustik-01.mp4",
-  },
-  {
-    id: "nem-01",
-    title: "Duvar İçi Nem Tespiti",
-    posterSrc: "/media/lp/su-kacagi-tespiti/reels/nem-01-poster.webp",
-    videoSrc: "/media/lp/su-kacagi-tespiti/reels/nem-01.mp4",
+    id: "termal-02",
+    title: "Termal Kamera ile Noktasal Tespit",
+    posterSrc: "/media/lp/su-kacagi-tespiti/reels/termal-02-poster.webp",
+    videoSrc: "/media/lp/su-kacagi-tespiti/reels/termal-02.mp4",
   },
 ] as const;
 
