@@ -2,13 +2,13 @@
 
 import { useState } from "react";
 import { Section } from "@/components/ui/Section";
+import { lpGoogleReviewsMeta } from "@/content/lp/google-reviews";
+import type { LpGoogleReview } from "@/content/lp/google-reviews";
 import { cn } from "@/lib/utils";
 
-export type LpReviewItem = {
-  id: string;
-  text: string;
-  rating: number;
-};
+export type LpReviewItem = LpGoogleReview;
+
+const INITIAL_VISIBLE = 3;
 
 function GoogleMark({ className }: { className?: string }) {
   return (
@@ -33,44 +33,38 @@ function GoogleMark({ className }: { className?: string }) {
   );
 }
 
-function Stars({ rating }: { rating: number }) {
+function Stars({
+  rating,
+  className,
+}: {
+  rating: number;
+  className?: string;
+}) {
   return (
-    <div className="flex items-center gap-1">
-      <div className="flex gap-0.5" aria-hidden="true">
-        {Array.from({ length: 5 }, (_, i) => (
-          <svg
-            key={i}
-            className={`h-4 w-4 ${i < rating ? "text-[#fbbc05]" : "text-border"}`}
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-          </svg>
-        ))}
-      </div>
-      <span className="text-sm font-bold text-on-light">{rating.toFixed(1)}</span>
+    <div className={cn("flex gap-0.5", className)} aria-hidden="true">
+      {Array.from({ length: 5 }, (_, i) => (
+        <svg
+          key={i}
+          className={`h-4 w-4 ${i < rating ? "text-[#fbbc05]" : "text-border"}`}
+          viewBox="0 0 20 20"
+          fill="currentColor"
+        >
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+        </svg>
+      ))}
     </div>
   );
 }
 
-function ReviewCard({
-  text,
-  rating,
-}: {
-  text: string;
-  rating: number;
-}) {
+function ReviewCard({ review }: { review: LpReviewItem }) {
   return (
-    <article className="flex h-full flex-col rounded-xl border border-border bg-surface px-4 py-4 shadow-sm sm:px-5 sm:py-5">
-      <div className="flex items-center gap-3">
-        <GoogleMark className="h-5 w-5 shrink-0 sm:h-6 sm:w-6" />
-        <Stars rating={rating} />
-      </div>
-      <p className="mt-3 flex-1 text-sm leading-snug text-on-light-muted sm:mt-4 sm:leading-relaxed">
-        {text}
-      </p>
-      <p className="mt-3 text-xs font-medium text-on-light-subtle sm:mt-4">
-        Google yorumu
+    <article className="flex h-full flex-col rounded-xl border border-border bg-surface px-4 py-4 sm:px-5 sm:py-5">
+      <Stars rating={review.rating} />
+      <h3 className="mt-3 font-heading text-sm font-bold text-on-light sm:text-base">
+        {review.author}
+      </h3>
+      <p className="mt-2 flex-1 text-sm leading-snug text-on-light-muted line-clamp-5 sm:leading-relaxed">
+        {review.text}
       </p>
     </article>
   );
@@ -78,51 +72,70 @@ function ReviewCard({
 
 type LpReviewsGridProps = {
   reviews: readonly LpReviewItem[];
+  ratingAverage?: number;
+  reviewCount?: number;
+  mapsUrl?: string;
+  initialVisible?: number;
 };
 
-export function LpReviewsGrid({ reviews }: LpReviewsGridProps) {
-  const [active, setActive] = useState(0);
+export function LpReviewsGrid({
+  reviews,
+  ratingAverage = lpGoogleReviewsMeta.ratingAverage,
+  reviewCount = lpGoogleReviewsMeta.reviewCount,
+  mapsUrl = lpGoogleReviewsMeta.mapsUrl,
+  initialVisible = INITIAL_VISIBLE,
+}: LpReviewsGridProps) {
+  const [expanded, setExpanded] = useState(false);
+  const visible = expanded ? reviews : reviews.slice(0, initialVisible);
+  const canExpand = reviews.length > initialVisible;
 
   return (
-    <Section className="section-divider bg-surface py-8 md:py-12">
+    <Section className="section-divider bg-bg-alt py-8 md:py-12">
       <h2 className="text-center font-heading text-xl font-semibold text-primary-dark sm:text-2xl md:text-3xl">
         Google&apos;da Bizi Tercih Eden Müşterilerimiz
       </h2>
 
-      <ul className="mt-4 hidden gap-4 sm:mt-6 md:grid md:grid-cols-3">
-        {reviews.map((review) => (
+      <div className="mt-5 overflow-hidden rounded-lg bg-[#1a1a1a] sm:mt-6">
+        <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 px-4 py-3 text-sm text-white sm:gap-x-4 sm:text-base">
+          <GoogleMark className="h-5 w-5 shrink-0 sm:h-6 sm:w-6" />
+          <span className="font-bold tabular-nums">
+            {ratingAverage.toFixed(1)}
+          </span>
+          <Stars rating={Math.round(ratingAverage)} />
+          <span className="font-medium text-white/90">
+            {reviewCount} Google yorumu
+          </span>
+          <a
+            href={mapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 font-semibold text-white underline-offset-2 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+          >
+            Tüm yorumlar
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <ul className="mt-4 grid grid-cols-1 gap-3 sm:mt-5 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
+        {visible.map((review) => (
           <li key={review.id}>
-            <ReviewCard text={review.text} rating={review.rating} />
+            <ReviewCard review={review} />
           </li>
         ))}
       </ul>
 
-      <div className="mt-4 md:hidden">
-        <ReviewCard
-          text={reviews[active].text}
-          rating={reviews[active].rating}
-        />
-        <div
-          className="mt-4 flex justify-center gap-2"
-          role="tablist"
-          aria-label="Yorumlar"
-        >
-          {reviews.map((review, index) => (
-            <button
-              key={review.id}
-              type="button"
-              role="tab"
-              aria-selected={active === index}
-              aria-label={`${index + 1}. yorum`}
-              onClick={() => setActive(index)}
-              className={cn(
-                "h-2.5 w-2.5 rounded-full transition-colors",
-                active === index ? "bg-primary" : "bg-on-light-border",
-              )}
-            />
-          ))}
+      {canExpand && !expanded ? (
+        <div className="mt-5 flex justify-center sm:mt-6">
+          <button
+            type="button"
+            onClick={() => setExpanded(true)}
+            className="rounded-lg border border-border bg-transparent px-5 py-2.5 text-sm font-semibold text-on-light-muted transition-colors hover:border-primary hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          >
+            Daha Fazla Göster
+          </button>
         </div>
-      </div>
+      ) : null}
     </Section>
   );
 }

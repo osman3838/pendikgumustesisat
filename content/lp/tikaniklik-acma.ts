@@ -131,24 +131,7 @@ export const lpWhyUs = [
 export const lpAreasNote =
   "Belirtilen bölgelerde aynı gün servis imkanı sunuyoruz.";
 
-/** Placeholder reviews — replace with real Google reviews when ready. */
-export const lpReviews = [
-  {
-    id: "review-1",
-    text: "Tuvalet tıkanıklığımızı aynı gün gelip açtılar. Kırmadan, temiz bir şekilde çözdüler. Çok memnun kaldık.",
-    rating: 5,
-  },
-  {
-    id: "review-2",
-    text: "Kameralı sistemle tıkanıklığın yerini hemen buldular. Profesyonel ve güvenilir bir ekip.",
-    rating: 5,
-  },
-  {
-    id: "review-3",
-    text: "Mutfak giderimiz sürekli tıkanıyordu. Kalıcı çözüm sundular, teşekkür ediyoruz.",
-    rating: 5,
-  },
-] as const;
+export { lpGoogleReviews as lpReviews } from "@/content/lp/google-reviews";
 
 export const lpFaqs: ServiceFaq[] = [
   {

@@ -166,24 +166,7 @@ export const lpSuKacagiWhyUs = [
 export const lpSuKacagiAreasNote =
   "Belirtilen bölgelerde aynı gün servis imkanı sunuyoruz.";
 
-/** Placeholder reviews — replace with real Google reviews when ready. */
-export const lpSuKacagiReviews = [
-  {
-    id: "review-1",
-    text: "[PLACEHOLDER: Google yorum metnini buraya yapıştırın — 1] Örn: Faturam artmıştı, sebebini buldular; sorunumuz kısa sürede çözüldü.",
-    rating: 5,
-  },
-  {
-    id: "review-2",
-    text: "[PLACEHOLDER: Google yorum metnini buraya yapıştırın — 2] Örn: Hızlı geldiler, kırmadan kaçağı buldular. Teşekkürler.",
-    rating: 5,
-  },
-  {
-    id: "review-3",
-    text: "[PLACEHOLDER: Google yorum metnini buraya yapıştırın — 3] Örn: Termal kamera ile noktasal tespit yaptılar, net bilgilendirdiler.",
-    rating: 5,
-  },
-] as const;
+export { lpGoogleReviews as lpSuKacagiReviews } from "@/content/lp/google-reviews";
 
 /** Keep existing service FAQ copy for FAQPage JSON-LD. */
 export function getLpSuKacagiFaqs(): ServiceFaq[] {
