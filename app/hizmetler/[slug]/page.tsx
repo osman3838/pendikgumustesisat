@@ -24,7 +24,8 @@ export async function generateStaticParams() {
     .filter(
       (service) =>
         service.slug !== "tikaniklik-acma" &&
-        service.slug !== "su-kacagi-tespiti",
+        service.slug !== "su-kacagi-tespiti" &&
+        service.slug !== "su-tesisati",
     )
     .map((service) => ({ slug: service.slug }));
 }

@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import { siteConfig } from "@/lib/site-config";
 import { lpTikaniklikPath } from "@/content/lp/tikaniklik-acma";
 import { lpSuKacagiPath } from "@/content/lp/su-kacagi-tespiti";
+import { lpSuTesisatiPath } from "@/content/lp/su-tesisati";
 import { PhoneIcon } from "@/components/ui/PhoneIcon";
 
 export function MobileCallButton() {
@@ -12,6 +13,7 @@ export function MobileCallButton() {
   if (
     pathname === lpTikaniklikPath ||
     pathname === lpSuKacagiPath ||
+    pathname === lpSuTesisatiPath ||
     pathname?.startsWith("/lp/")
   ) {
     return null;

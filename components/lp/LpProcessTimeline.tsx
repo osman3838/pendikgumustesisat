@@ -4,7 +4,7 @@ export type LpProcessStep = {
   step: number;
   title: string;
   description: string;
-  icon: "phone" | "van" | "check" | "target";
+  icon: "phone" | "van" | "check" | "target" | "person" | "wrench";
 };
 
 function StepIcon({ icon }: { icon: LpProcessStep["icon"] }) {
@@ -48,6 +48,28 @@ function StepIcon({ icon }: { icon: LpProcessStep["icon"] }) {
       </svg>
     );
   }
+  if (icon === "person") {
+    return (
+      <svg {...common}>
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+        />
+      </svg>
+    );
+  }
+  if (icon === "wrench") {
+    return (
+      <svg {...common}>
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"
+        />
+      </svg>
+    );
+  }
   return (
     <svg {...common}>
       <path
@@ -61,13 +83,22 @@ function StepIcon({ icon }: { icon: LpProcessStep["icon"] }) {
 
 type LpProcessTimelineProps = {
   steps: readonly LpProcessStep[];
+  title?: string;
+  /** When false, render without outer Section (for split layouts) */
+  asSection?: boolean;
+  className?: string;
 };
 
-export function LpProcessTimeline({ steps }: LpProcessTimelineProps) {
-  return (
-    <Section className="section-divider bg-surface py-5 md:py-12">
-      <h2 className="text-center font-heading text-lg font-semibold text-primary-dark sm:text-2xl md:text-3xl">
-        Nasıl Çalışıyoruz?
+export function LpProcessTimeline({
+  steps,
+  title = "Nasıl Çalışıyoruz?",
+  asSection = true,
+  className,
+}: LpProcessTimelineProps) {
+  const body = (
+    <>
+      <h2 className="text-center font-heading text-lg font-semibold text-primary-dark sm:text-left sm:text-2xl md:text-3xl">
+        {title}
       </h2>
 
       <ol className="relative mx-auto mt-5 max-w-lg space-y-5 md:hidden">
@@ -126,6 +157,18 @@ export function LpProcessTimeline({ steps }: LpProcessTimelineProps) {
           </li>
         ))}
       </ol>
+    </>
+  );
+
+  if (!asSection) {
+    return <div className={className}>{body}</div>;
+  }
+
+  return (
+    <Section
+      className={className ?? "section-divider bg-surface py-5 md:py-12"}
+    >
+      {body}
     </Section>
   );
 }

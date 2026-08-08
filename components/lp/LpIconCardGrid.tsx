@@ -14,6 +14,8 @@ type LpIconCardGridProps = {
   /** title-only compact cards (symptoms) vs title+description (leak types) */
   variant?: "compact" | "detailed";
   className?: string;
+  /** Desktop column count */
+  columns?: 3 | 4;
 };
 
 export function LpIconCardGrid({
@@ -22,13 +24,20 @@ export function LpIconCardGrid({
   renderIcon,
   variant = "detailed",
   className = "bg-surface py-5 md:py-12",
+  columns = 4,
 }: LpIconCardGridProps) {
   return (
     <Section className={className}>
       <h2 className="text-center font-heading text-lg font-semibold text-primary-dark sm:text-2xl md:text-3xl">
         {title}
       </h2>
-      <ul className="mt-3 grid grid-cols-2 gap-2.5 sm:mt-5 sm:gap-3 lg:grid-cols-4 lg:gap-4">
+      <ul
+        className={
+          columns === 3
+            ? "mt-3 grid grid-cols-1 gap-2.5 sm:mt-5 sm:grid-cols-2 sm:gap-3 lg:grid-cols-3 lg:gap-4"
+            : "mt-3 grid grid-cols-2 gap-2.5 sm:mt-5 sm:gap-3 lg:grid-cols-4 lg:gap-4"
+        }
+      >
         {items.map((item) => (
           <li
             key={item.id}
