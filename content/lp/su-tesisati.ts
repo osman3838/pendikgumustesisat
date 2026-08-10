@@ -17,8 +17,8 @@ export const lpSuTesisatiHero = {
   image: {
     src: "/media/lp/su-tesisati/hero.jpg",
     alt: "Mutfak lavabosu altında su tesisatı onarımı yapan Gümüş Tesisat ustası",
-    width: 1536,
-    height: 1024,
+    width: 1024,
+    height: 721,
   },
   badges: [
     { id: "clock", label: "Aynı Gün Servis" },
