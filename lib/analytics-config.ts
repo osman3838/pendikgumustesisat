@@ -1,3 +1,6 @@
+/** Google Tag Manager container ID. */
+export const GTM_ID = "GTM-TZNHZTJ5";
+
 /** Google Ads conversion ID (base tag). */
 export const GOOGLE_ADS_ID = "AW-16513117105";
 

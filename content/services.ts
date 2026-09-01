@@ -508,25 +508,29 @@ export const services: Service[] = [
     ],
     faq: [
       {
-        question: "Sadece kombi bağlantısı yapıyor musunuz?",
+        question: "Doğalgaz tesisatı için keşif gerekir mi?",
         answer:
-          "Kombi bağlantısı ve hat düzenlemesi talep edilebilir; kapsam keşifte netleşir.",
+          "Evet. Hat güzergâhı, cihaz konumu ve güvenlik koşulları yerinde görülmeden net plan ve fiyat çıkarmak sağlıklı olmaz. Keşif sonrası kapsamı açıkça anlatırız.",
       },
       {
-        question: "Pendik–Kurtköy dışında?",
-        answer: "Kartal ve Tuzla da hizmet bölgemiz.",
+        question: "Ocak yeri değişince hat taşınabilir mi?",
+        answer:
+          "Çoğu durumda evet — mevcut hat durumu ve mesafe keşifte değerlendirilir. Uygun değilse alternatif güzergâh veya bağlantı seçeneklerini paylaşırız.",
       },
       {
-        question: "Tadilat bitmeden mi çağırayım?",
+        question: "Kombi bağlantı hattı nasıl hazırlanır?",
         answer:
-          "Evet — kaba iş aşamasında keşif çoğu zaman daha sağlıklıdır.",
+          "Kombi yeri, hat güzergâhı ve güvenlik şartları keşifte netleşir. Onaylanan kapsamda bağlantı hattı hazırlanır; resmi prosedür gerektiren adımlar varsa bunları size söyleriz.",
       },
       {
-        question: "Fiyat ne kadar?",
+        question: "Doğalgaz tesisatı fiyatı nasıl belirlenir?",
         answer:
-          "Hat metrajı ve iş tipine göre değişir. Sabit liste yok; keşif sonrası netleşir.",
+          "Hat metrajı, iş tipi (yeni hat, tadilat, bağlantı) ve malzeme ihtiyacına göre değişir. Sabit liste fiyatı yok; keşif sonrası netleşir.",
       },
-      // Future FAQs (re-add when copy supplied): resmi süreç/onay; gaz kaçağı güvenlik adımları.
+      {
+        question: "Hangi bölgelere hizmet veriyorsunuz?",
+        answer: "Pendik, Kurtköy, Kartal ve Tuzla.",
+      },
     ],
     relatedSlugs: [
       "kombi-bakim-onarim",

@@ -5,6 +5,7 @@ import { siteConfig } from "@/lib/site-config";
 import { lpTikaniklikPath } from "@/content/lp/tikaniklik-acma";
 import { lpSuKacagiPath } from "@/content/lp/su-kacagi-tespiti";
 import { lpSuTesisatiPath } from "@/content/lp/su-tesisati";
+import { lpDogalgazPath } from "@/content/lp/dogalgaz-tesisati";
 import { PhoneIcon } from "@/components/ui/PhoneIcon";
 
 export function MobileCallButton() {
@@ -14,6 +15,7 @@ export function MobileCallButton() {
     pathname === lpTikaniklikPath ||
     pathname === lpSuKacagiPath ||
     pathname === lpSuTesisatiPath ||
+    pathname === lpDogalgazPath ||
     pathname?.startsWith("/lp/")
   ) {
     return null;

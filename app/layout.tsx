@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { Fraunces, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
-import { GoogleTags } from "@/components/analytics/GoogleTags";
+import {
+  GoogleTagManagerNoscript,
+  GoogleTags,
+} from "@/components/analytics/GoogleTags";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { MobileCallButton } from "@/components/layout/MobileCallButton";
@@ -46,6 +49,7 @@ export default function RootLayout({
       className={`${fontHeading.variable} ${fontBody.variable} h-full`}
     >
       <body className="flex min-h-full flex-col pb-[4.75rem] font-sans antialiased md:pb-0">
+        <GoogleTagManagerNoscript />
         <GoogleTags />
         <JsonLd />
         <Header />
