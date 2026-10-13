@@ -1,9 +1,10 @@
 # Pendik Gümüş Tesisat
 
-Production website for **Pendik Gümüş Tesisat** — plumbing and unclogging services in Pendik, Kartal, and Tuzla (Istanbul).
+Production website for **Pendik Gümüş Tesisat** — plumbing and unclogging services in Pendik, Kurtköy, Kartal, and Tuzla (Istanbul).
 
 - **Domain:** [www.pendikgumustesisat.com](https://www.pendikgumustesisat.com)
 - **Stack:** Next.js (App Router), TypeScript, Tailwind CSS
+- **Repo:** GitLab (`aybekyilmaz1/pendikgumustesisat`)
 - **Deploy:** Vercel
 
 ## Local development
@@ -11,6 +12,7 @@ Production website for **Pendik Gümüş Tesisat** — plumbing and unclogging s
 ```bash
 npm install
 cp .env.example .env.local
+# Fill in BLOG_WRITER_* from the Aymar project / Vercel env
 npm run dev
 ```
 
@@ -18,34 +20,58 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Environment variables
 
-| Variable | Description |
-|----------|-------------|
-| `NEXT_PUBLIC_WHATSAPP_NUMBER` | WhatsApp number for click-to-chat links (digits only, e.g. `905511624955`) |
-| `NEXT_PUBLIC_SITE_URL` | Canonical site URL (defaults to `https://www.pendikgumustesisat.com`) |
-| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | Optional GA4 measurement ID (defaults to `G-1YX918GS90`). Set empty to disable GA4. |
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `NEXT_PUBLIC_WHATSAPP_NUMBER` | No | WhatsApp number for `wa.me` links (digits only, e.g. `905511624955`). Falls back to that number if unset. |
+| `NEXT_PUBLIC_SITE_URL` | No | Canonical site URL. Defaults to `https://www.pendikgumustesisat.com`. |
+| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | No | GA4 measurement ID. Defaults to `G-1YX918GS90`. Set empty to disable. |
+| `BLOG_WRITER_BASE_URL` | For blog | Aymar publish API base URL for this project. |
+| `BLOG_WRITER_API_KEY` | For blog | Server-only API key (`X-API-Key`). Keep out of git. |
 
-Both variables are public (`NEXT_PUBLIC_`) so client components (sticky WhatsApp button, mobile nav) can build `wa.me` links safely. If unset, hardcoded fallbacks prevent broken URLs.
+Phone display / `tel:` links live in `lib/site-config.ts` (not env). Change both there and `NEXT_PUBLIC_WHATSAPP_NUMBER` if the business number changes.
 
-## Vercel deploy
+## Main routes
 
-1. Push this repo to GitHub
-2. Import the project in [Vercel](https://vercel.com)
-3. Set environment variables for **Production**, **Preview**, and **Development**:
-   - `NEXT_PUBLIC_WHATSAPP_NUMBER` = `905511624955`
-   - `NEXT_PUBLIC_SITE_URL` = `https://www.pendikgumustesisat.com`
-4. Add custom domain: `www.pendikgumustesisat.com` (optionally redirect apex `pendikgumustesisat.com` → www)
-5. Deploy
+| Path | Notes |
+|------|--------|
+| `/` | Home |
+| `/hizmetler` | Services index |
+| `/hizmetler/tikaniklik-acma` | Landing: tıkanıklık açma |
+| `/hizmetler/su-kacagi-tespiti` | Landing: su kaçağı tespiti |
+| `/hizmetler/su-tesisati` | Landing: su tesisatı |
+| `/hizmetler/dogalgaz-tesisati` | Landing: doğalgaz tesisatı |
+| `/hizmetler/[slug]` | Other service detail pages from `content/services.ts` |
+| `/blog`, `/blog/[slug]` | Blog (Aymar CMS) |
+| `/hakkimizda`, `/iletisim` | About / contact |
+| `/lp/tikaniklik-acma` | 301 → `/hizmetler/tikaniklik-acma` |
 
-### Post-deploy smoke tests
-
-- Tap the sticky WhatsApp button on mobile → should open `wa.me/905511624955`
-- View page source → JSON-LD shows `Pendik Gümüş Tesisat` and production URL
-- Visit `/sitemap.xml` and `/robots.txt` → URLs use `https://www.pendikgumustesisat.com`
-
-## Brand assets
-
-Logo: [`public/brand/logo.jpg`](public/brand/logo.jpg) — used in header, footer, favicon, Open Graph, and JSON-LD.
+Content for service landings lives under `content/lp/` and `content/services.ts`.
 
 ## Blog
 
-Blog ingestion is deferred. `/blog` shows a placeholder until a separate publishing system is connected.
+Posts are fetched server-side from Aymar (`lib/blog-api.ts`). Without valid `BLOG_WRITER_*` env vars, `/blog` shows an empty-state message instead of posts. Sitemap includes blog URLs when the API responds.
+
+## Brand assets
+
+- Logo (UI / JSON-LD): [`public/brand/logo.png`](public/brand/logo.png) — path set in `lib/site-config.ts`
+- Also on disk: `logo.jpg`, `hero.jpg`, favicon/icon assets under `public/brand/` and `app/`
+
+## Vercel deploy
+
+1. Connect the GitLab repo in [Vercel](https://vercel.com)
+2. Set env vars for **Production** (and Preview if needed):
+   - `NEXT_PUBLIC_WHATSAPP_NUMBER` = `905511624955`
+   - `NEXT_PUBLIC_SITE_URL` = `https://www.pendikgumustesisat.com`
+   - `NEXT_PUBLIC_GA_MEASUREMENT_ID` = `G-1YX918GS90` (or empty to disable)
+   - `BLOG_WRITER_BASE_URL` = Aymar publish URL for this project
+   - `BLOG_WRITER_API_KEY` = Aymar API key
+3. Custom domain: `www.pendikgumustesisat.com` (optionally redirect apex → www)
+4. Deploy
+
+### Post-deploy smoke tests
+
+- Mobile sticky **Hemen Ara** bar → opens `tel:+905511624955` (hidden on dedicated service landings, which use their own sticky CTAs)
+- Footer / LP WhatsApp links → `wa.me/905511624955`
+- View page source → JSON-LD shows `Pendik Gümüş Tesisat` and production URL
+- `/sitemap.xml` and `/robots.txt` → URLs use `https://www.pendikgumustesisat.com`
+- `/blog` → lists posts when Aymar env is configured
