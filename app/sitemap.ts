@@ -14,13 +14,33 @@ function normalizeUrl(url: string): string {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const staticRoutes = ["", "/hizmetler", "/hakkimizda", "/iletisim", "/blog"];
+  const staticRoutes = [
+    "",
+    "/hizmetler",
+    "/kartal-tesisatci",
+    "/tuzla-tesisatci",
+    "/pendik-tikaniklik-acma",
+    "/kartal-tikaniklik-acma",
+    "/tuzla-tikaniklik-acma",
+    "/hakkimizda",
+    "/iletisim",
+    "/blog",
+  ];
+
+  const regionalPaths = new Set([
+    "/kartal-tesisatci",
+    "/tuzla-tesisatci",
+    "/pendik-tikaniklik-acma",
+    "/kartal-tikaniklik-acma",
+    "/tuzla-tikaniklik-acma",
+  ]);
 
   const staticEntries: MetadataRoute.Sitemap = staticRoutes.map((path) => ({
     url: `${siteConfig.url}${path}`,
     lastModified: new Date(),
-    changeFrequency: path === "" ? "weekly" : "monthly",
-    priority: path === "" ? 1 : 0.8,
+    changeFrequency:
+      path === "" ? "weekly" : regionalPaths.has(path) ? "weekly" : "monthly",
+    priority: path === "" ? 1 : regionalPaths.has(path) ? 0.9 : 0.8,
   }));
 
   const serviceEntries: MetadataRoute.Sitemap = services.map((service) => ({

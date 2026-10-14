@@ -16,6 +16,11 @@ export function MobileCallButton() {
     pathname === lpSuKacagiPath ||
     pathname === lpSuTesisatiPath ||
     pathname === lpDogalgazPath ||
+    pathname === "/kartal-tesisatci" ||
+    pathname === "/tuzla-tesisatci" ||
+    pathname === "/pendik-tikaniklik-acma" ||
+    pathname === "/kartal-tikaniklik-acma" ||
+    pathname === "/tuzla-tikaniklik-acma" ||
     pathname?.startsWith("/lp/")
   ) {
     return null;

@@ -28,6 +28,11 @@ const nextConfig: NextConfig = {
         destination: "/hizmetler/tikaniklik-acma",
         permanent: true,
       },
+      {
+        source: "/kartal-tuzla-tesisatci",
+        destination: "/kartal-tesisatci",
+        permanent: true,
+      },
     ];
   },
 };
